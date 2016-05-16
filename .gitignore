@@ -1,0 +1,10 @@
+.DS_Store
+
+*.egg-info
+*.pyc
+build
+dist
+
+.coverage
+db.sqlite3
+chileayuda/settings.py
