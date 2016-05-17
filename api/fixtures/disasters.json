@@ -1,0 +1,14 @@
+[
+	{
+		"pk": 1,
+		"model": "api.disaster",
+		"fields": {
+			"name": "Desastre de prueba en Beauchef",
+			"description": "Esta es una prueba de un desastre.",
+			"user": 1,
+			"date": "2016-05-16T04:00:01Z",
+			"commune": 1,
+			"coordinates": 1
+		}
+	}
+]

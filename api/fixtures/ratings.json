@@ -1,0 +1,11 @@
+[
+	{
+		"pk": 1,
+		"model": "api.rating",
+		"fields": {
+			"user": 1,
+			"date": "2016-05-16T04:00:02Z",
+			"value": 1
+		}
+	}
+]

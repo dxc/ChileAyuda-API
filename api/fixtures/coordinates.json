@@ -1,0 +1,18 @@
+[
+	{
+		"pk": 1,
+		"model": "api.coordinates",
+		"fields": {
+			"latitude": -33.4583573,
+			"longitude": -70.6631088
+		}
+	},
+	{
+		"pk": 2,
+		"model": "api.coordinates",
+		"fields": {
+			"latitude": -33.457764,
+			"longitude": -70.6624468
+		}
+	}
+]

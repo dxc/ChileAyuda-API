@@ -1,0 +1,16 @@
+[
+	{
+		"pk": 1,
+		"model": "api.incident",
+		"fields": {
+			"disaster": 1,
+			"category": [1],
+			"name": "Incidente de prueba",
+			"description": "Este es un incidente de prueba.",
+			"date": "2016-05-16T04:00:03Z",
+			"user": 1,
+			"commune": 1,
+			"coordinates": 2
+		}
+	}
+]

@@ -1,0 +1,10 @@
+[
+	{
+		"pk": 1,
+		"model": "api.category",
+		"fields": {
+			"name": "Emergencia",
+			"style": 1
+		}
+	}
+]

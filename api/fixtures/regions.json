@@ -1,0 +1,9 @@
+[
+	{
+		"pk": 13,
+		"model": "api.region",
+		"fields": {
+			"name": "Región Metropolitana"
+		}
+	}
+]

@@ -1,0 +1,10 @@
+[
+	{
+		"pk": 1,
+		"model": "api.commune",
+		"fields": {
+			"province": 1,
+			"name": "Santiago"
+		}
+	}
+]
