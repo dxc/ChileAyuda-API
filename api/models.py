@@ -8,6 +8,7 @@ from django.utils import timezone
 
 class Region(models.Model):
     name = models.CharField(max_length=64)
+    iso_3166_2 = models.CharField(max_length=5)
 
     def __unicode__(self):
         return '{0:d} - {1:s}'.format(self.pk, self.name)
