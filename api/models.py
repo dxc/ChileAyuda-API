@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from .libs import is_integer
+
 
 class Region(models.Model):
     name = models.CharField(max_length=64)
@@ -91,7 +93,7 @@ class MediaSource(models.Model):
 
 class Incident(models.Model):
     disaster = models.ForeignKey(Disaster)
-    category = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category)
 
     name = models.CharField(max_length=64)
     description = models.TextField()
@@ -125,8 +127,7 @@ class Incident(models.Model):
         details.save()
 
     def rate(self, user, value):
-        if user is None \
-                or not isinstance(value, (int, long)) or value not in [1, -1]:
+        if user is None or not is_integer(value) or value not in [1, -1]:
             return
         rating = IncidentRating(
             incident=self,
@@ -161,7 +162,7 @@ class Incident(models.Model):
 
 
 class IncidentValidation(models.Model):
-    incident = models.OneToOneField(Incident)
+    incident = models.ForeignKey(Incident)
 
     user = models.ForeignKey(User)
     date = models.DateTimeField()
@@ -201,7 +202,7 @@ class IncidentMedia(models.Model):
     incident = models.ForeignKey(Incident)
 
     user = models.ForeignKey(User)
+    date = models.DateTimeField()
 
     source = models.ForeignKey(MediaSource)
-    url = models.CharField(max_length=2000)
-    date = models.DateTimeField()
+    url = models.URLField(max_length=2000)

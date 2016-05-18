@@ -7,6 +7,6 @@ from ..models import Region
 from ..serializers import RegionSerializer
 
 
-class RegionSet(viewsets.ModelViewSet):
+class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer

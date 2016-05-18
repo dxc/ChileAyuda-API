@@ -39,11 +39,11 @@ class TestModelIncident(TransactionTestCase):
         result = incident.validate(user, text)
         self.assertTrue(result)
 
-        expected = Incident.objects.get(pk=1).incidentvalidation
+        expected = Incident.objects.get(pk=1).incidentvalidation_set.all()
 
-        self.assertIsNotNone(expected)
-        self.assertEquals(user, expected.user)
-        self.assertEquals(text, expected.text)
+        self.assertEquals(1, len(expected))
+        self.assertEquals(user, expected[0].user)
+        self.assertEquals(text, expected[0].text)
 
     def test_model_incident_validate_invalid(self):
         incident = Incident.objects.get(pk=1)
@@ -54,12 +54,8 @@ class TestModelIncident(TransactionTestCase):
             result = incident.validate(*args)
             self.assertFalse(result)
 
-            try:
-                expected = Incident.objects.get(pk=1).incidentvalidation
-                self.fail()
-            except ObjectDoesNotExist:
-                expected = None
-            self.assertIsNone(expected)
+            expected = Incident.objects.get(pk=1).incidentvalidation_set.all()
+            self.assertEquals(0, len(expected))
 
     def test_model_incident_set_details(self):
         incident = Incident.objects.get(pk=1)

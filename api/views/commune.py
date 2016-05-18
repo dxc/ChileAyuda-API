@@ -2,8 +2,9 @@
 from __future__ import unicode_literals
 
 from django.core.exceptions import ObjectDoesNotExist
-from rest_framework import viewsets
+from rest_framework import viewsets, serializers
 
+from ..libs import ObjectNotFound, is_integer
 from ..models import Province, Commune
 from ..serializers import CommuneSerializer
 
@@ -14,12 +15,13 @@ class CommuneViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         province_id = self.request.query_params.get('province')
 
-        if province_id in [None, '', 'null']:
-            return Commune.objects.none()
-
+        if not is_integer(province_id):
+            raise serializers.ValidationError(
+                'Province integer id required.'
+            )
         try:
             province = Province.objects.get(pk=province_id)
         except ObjectDoesNotExist:
-            return Commune.objects.none()
+            raise ObjectNotFound('Province')
 
         return Commune.objects.filter(province=province)

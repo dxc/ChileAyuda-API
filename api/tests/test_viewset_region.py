@@ -7,12 +7,12 @@ from django.test.testcases import TransactionTestCase
 from rest_framework.test import APIClient
 
 
-class TestViewRegionSet(TransactionTestCase):
+class TestViewSetRegion(TransactionTestCase):
 
     fixtures = ['regions.json']
 
     def setUp(self):
-        super(TestViewRegionSet, self).setUp()
+        super(TestViewSetRegion, self).setUp()
         self.client = APIClient()
 
     def test_http_get(self):
