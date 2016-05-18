@@ -6,5 +6,22 @@
 			"name": "Emergencia",
 			"style": 1
 		}
+	},
+	{
+		"pk": 2,
+		"model": "api.category",
+		"fields": {
+			"name": "Sub-Emergencia 1",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 3,
+		"model": "api.category",
+		"fields": {
+			"name": "Alerta",
+			"style": 1
+		}
 	}
 ]

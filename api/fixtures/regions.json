@@ -3,7 +3,8 @@
 		"pk": 13,
 		"model": "api.region",
 		"fields": {
-			"name": "Región Metropolitana"
+			"name": "Región Metropolitana",
+			"iso_3166_2": "CL-RM"
 		}
 	}
 ]

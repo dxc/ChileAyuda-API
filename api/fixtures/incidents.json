@@ -4,7 +4,7 @@
 		"model": "api.incident",
 		"fields": {
 			"disaster": 1,
-			"category": [1],
+			"categories": [1],
 			"name": "Incidente de prueba",
 			"description": "Este es un incidente de prueba.",
 			"date": "2016-05-16T04:00:03Z",

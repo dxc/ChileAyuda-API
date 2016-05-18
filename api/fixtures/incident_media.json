@@ -6,7 +6,8 @@
 			"incident": 1,
 			"user": 1,
 			"source": 1,
-			"url": "http://facebook.com/fake_fb_url"
+			"url": "http://facebook.com/fake_fb_url",
+			"date": "2016-05-16T04:00:03Z"
 		}
 	}
 ]

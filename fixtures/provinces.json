@@ -1,0 +1,435 @@
+[
+	{
+		"pk": 11,
+		"model": "api.province",
+		"fields": {
+			"region": 1,
+			"name": "Iquique"
+		}
+	},
+	{
+		"pk": 14,
+		"model": "api.province",
+		"fields": {
+			"region": 1,
+			"name": "El Tamarugal"
+		}
+	},
+	{
+		"pk": 21,
+		"model": "api.province",
+		"fields": {
+			"region": 2,
+			"name": "Antofagasta"
+		}
+	},
+	{
+		"pk": 22,
+		"model": "api.province",
+		"fields": {
+			"region": 2,
+			"name": "El Loa"
+		}
+	},
+	{
+		"pk": 23,
+		"model": "api.province",
+		"fields": {
+			"region": 2,
+			"name": "Tocopilla"
+		}
+	},
+	{
+		"pk": 31,
+		"model": "api.province",
+		"fields": {
+			"region": 3,
+			"name": "Copiapó"
+		}
+	},
+	{
+		"pk": 32,
+		"model": "api.province",
+		"fields": {
+			"region": 3,
+			"name": "Chañaral"
+		}
+	},
+	{
+		"pk": 33,
+		"model": "api.province",
+		"fields": {
+			"region": 3,
+			"name": "Huasco"
+		}
+	},
+	{
+		"pk": 41,
+		"model": "api.province",
+		"fields": {
+			"region": 4,
+			"name": "Elqui"
+		}
+	},
+	{
+		"pk": 42,
+		"model": "api.province",
+		"fields": {
+			"region": 4,
+			"name": "Choapa"
+		}
+	},
+	{
+		"pk": 43,
+		"model": "api.province",
+		"fields": {
+			"region": 4,
+			"name": "Limarí"
+		}
+	},
+	{
+		"pk": 51,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Valparaiso"
+		}
+	},
+	{
+		"pk": 52,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Isla de Pascua"
+		}
+	},
+	{
+		"pk": 53,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Los Andes"
+		}
+	},
+	{
+		"pk": 54,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Petorca"
+		}
+	},
+	{
+		"pk": 55,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Quillota"
+		}
+	},
+	{
+		"pk": 56,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "San Antonio"
+		}
+	},
+	{
+		"pk": 57,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "San Felipe de Aconcagua"
+		}
+	},
+	{
+		"pk": 58,
+		"model": "api.province",
+		"fields": {
+			"region": 5,
+			"name": "Marga Marga"
+		}
+	},
+	{
+		"pk": 61,
+		"model": "api.province",
+		"fields": {
+			"region": 6,
+			"name": "Cachapoal"
+		}
+	},
+	{
+		"pk": 62,
+		"model": "api.province",
+		"fields": {
+			"region": 6,
+			"name": "Cardenal Caro"
+		}
+	},
+	{
+		"pk": 63,
+		"model": "api.province",
+		"fields": {
+			"region": 6,
+			"name": "Colchagua"
+		}
+	},
+	{
+		"pk": 71,
+		"model": "api.province",
+		"fields": {
+			"region": 7,
+			"name": "Talca"
+		}
+	},
+	{
+		"pk": 72,
+		"model": "api.province",
+		"fields": {
+			"region": 7,
+			"name": "Cauquenes"
+		}
+	},
+	{
+		"pk": 73,
+		"model": "api.province",
+		"fields": {
+			"region": 7,
+			"name": "Curicó"
+		}
+	},
+	{
+		"pk": 74,
+		"model": "api.province",
+		"fields": {
+			"region": 7,
+			"name": "Linares"
+		}
+	},
+	{
+		"pk": 81,
+		"model": "api.province",
+		"fields": {
+			"region": 8,
+			"name": "Concepción"
+		}
+	},
+	{
+		"pk": 82,
+		"model": "api.province",
+		"fields": {
+			"region": 8,
+			"name": "Arauco"
+		}
+	},
+	{
+		"pk": 83,
+		"model": "api.province",
+		"fields": {
+			"region": 8,
+			"name": "Biobío"
+		}
+	},
+
+	{
+		"pk": 84,
+		"model": "api.province",
+		"fields": {
+			"region": 8,
+			"name": "Ñuble"
+		}
+	},
+	{
+		"pk": 91,
+		"model": "api.province",
+		"fields": {
+			"region": 9,
+			"name": "Cautín"
+		}
+	},
+	{
+		"pk": 92,
+		"model": "api.province",
+		"fields": {
+			"region": 9,
+			"name": "Malleco"
+		}
+	},
+	{
+		"pk": 101,
+		"model": "api.province",
+		"fields": {
+			"region": 10,
+			"name": "Llanquihue"
+		}
+	},
+	{
+		"pk": 102,
+		"model": "api.province",
+		"fields": {
+			"region": 10,
+			"name": "Chiloé"
+		}
+	},
+	{
+		"pk": 103,
+		"model": "api.province",
+		"fields": {
+			"region": 10,
+			"name": "Osorno"
+		}
+	},
+	{
+		"pk": 104,
+		"model": "api.province",
+		"fields": {
+			"region": 10,
+			"name": "Palena"
+		}
+	},
+	{
+		"pk": 111,
+		"model": "api.province",
+		"fields": {
+			"region": 11,
+			"name": "Coihaique"
+		}
+	},
+	{
+		"pk": 112,
+		"model": "api.province",
+		"fields": {
+			"region": 11,
+			"name": "Aisén"
+		}
+	},
+	{
+		"pk": 113,
+		"model": "api.province",
+		"fields": {
+			"region": 11,
+			"name": "Capitán Prat"
+		}
+	},
+	{
+		"pk": 114,
+		"model": "api.province",
+		"fields": {
+			"region": 11,
+			"name": "General Carrera"
+		}
+	},
+	{
+		"pk": 121,
+		"model": "api.province",
+		"fields": {
+			"region": 12,
+			"name": "Magallanes"
+		}
+	},
+	{
+		"pk": 122,
+		"model": "api.province",
+		"fields": {
+			"region": 12,
+			"name": "Antártica Chilena"
+		}
+	},
+	{
+		"pk": 123,
+		"model": "api.province",
+		"fields": {
+			"region": 12,
+			"name": "Tierra del Fuego"
+		}
+	},
+	{
+		"pk": 124,
+		"model": "api.province",
+		"fields": {
+			"region": 12,
+			"name": "Última Esperanza"
+		}
+	},
+	{
+		"pk": 131,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Santiago"
+		}
+	},
+	{
+		"pk": 132,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Cordillera"
+		}
+	},
+	{
+		"pk": 133,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Chacabuco"
+		}
+	},
+	{
+		"pk": 134,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Maipo"
+		}
+	},
+	{
+		"pk": 135,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Melipilla"
+		}
+	},
+	{
+		"pk": 136,
+		"model": "api.province",
+		"fields": {
+			"region": 13,
+			"name": "Talagante"
+		}
+	},
+	{
+		"pk": 141,
+		"model": "api.province",
+		"fields": {
+			"region": 14,
+			"name": "Valdivia"
+		}
+	},
+	{
+		"pk": 142,
+		"model": "api.province",
+		"fields": {
+			"region": 14,
+			"name": "Ranco"
+		}
+	},
+	{
+		"pk": 151,
+		"model": "api.province",
+		"fields": {
+			"region": 15,
+			"name": "Arica"
+		}
+	},
+	{
+		"pk": 152,
+		"model": "api.province",
+		"fields": {
+			"region": 15,
+			"name": "Parinacota"
+		}
+	}
+]

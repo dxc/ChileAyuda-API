@@ -17,15 +17,25 @@ class TestModelCategory(TransactionTestCase):
             unicode(expected)
         )
 
+        child = Category.objects.get(pk=2)
+        children = expected.children.all()
+
+        self.assertEquals(1, len(children))
+        self.assertIn(child, children)
+
+        expected = Category.objects.get(pk=3)
+        children = expected.children.all()
+        self.assertEquals(0, len(children))
+
     def test_model_category_subcategories(self):
         parent = Category.objects.get(pk=1)
         style = Style.objects.get(pk=1)
 
         subcategory = Category(
-            name="Sub-emergencia",
+            name="Sub-emergencia 2",
             style=style,
             parent=parent
         )
         subcategory.save()
 
-        self.assertEquals(subcategory, parent.children.all()[0])
+        self.assertIn(subcategory, parent.children.all())
