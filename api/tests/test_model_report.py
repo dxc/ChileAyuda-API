@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.test.testcases import TransactionTestCase
 
-from ..models import Incident, MediaSource
+from ..models import Report, MediaSource
 
 
-class TestModelIncident(TransactionTestCase):
+class TestModelReport(TransactionTestCase):
 
     fixtures = [
         'users.json',
@@ -20,45 +20,45 @@ class TestModelIncident(TransactionTestCase):
         'styles.json',
         'categories.json',
         'media_sources.json',
-        'incidents.json',
+        'reports.json',
     ]
 
-    def test_model_incident_unicode(self):
-        expected = Incident.objects.get(pk=1)
+    def test_model_report_unicode(self):
+        expected = Report.objects.get(pk=1)
 
         self.assertEquals(
-            'Desastre de prueba en Beauchef - Incidente de prueba',
+            'Desastre de prueba en Beauchef - Reporte de prueba',
             unicode(expected)
         )
 
-    def test_model_incident_validate(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_validate(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
-        text = 'Incidente verificado en el lugar.'
+        text = 'Reporte verificado en el lugar.'
 
-        result = incident.validate(user, text)
+        result = report.validate(user, text)
         self.assertTrue(result)
 
-        expected = Incident.objects.get(pk=1).incidentvalidation_set.all()
+        expected = Report.objects.get(pk=1).reportvalidation_set.all()
 
         self.assertEquals(1, len(expected))
         self.assertEquals(user, expected[0].user)
         self.assertEquals(text, expected[0].text)
 
-    def test_model_incident_validate_invalid(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_validate_invalid(self):
+        report = Report.objects.get(pk=1)
 
-        text = 'Incidente verificado en el lugar.'
+        text = 'Reporte verificado en el lugar.'
 
         for args in [(None, None), (None, text)]:
-            result = incident.validate(*args)
+            result = report.validate(*args)
             self.assertFalse(result)
 
-            expected = Incident.objects.get(pk=1).incidentvalidation_set.all()
+            expected = Report.objects.get(pk=1).reportvalidation_set.all()
             self.assertEquals(0, len(expected))
 
-    def test_model_incident_set_details(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_set_details(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         details = {
@@ -67,9 +67,9 @@ class TestModelIncident(TransactionTestCase):
             'damaged_buildings': 1
         }
 
-        incident.set_details(user, details)
+        report.set_details(user, details)
 
-        expected = Incident.objects.get(pk=1).incidentdetail
+        expected = Report.objects.get(pk=1).reportdetail
 
         self.assertIsNotNone(expected)
         self.assertEquals(1, expected.missing_people)
@@ -79,8 +79,8 @@ class TestModelIncident(TransactionTestCase):
         self.assertIsNone(expected.deceased_people)
         self.assertIsNone(expected.damaged_vehicles)
 
-    def test_model_incident_set_details_invalid(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_set_details_invalid(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         details = {
@@ -96,31 +96,31 @@ class TestModelIncident(TransactionTestCase):
         ]
 
         for args in args_list:
-            incident.set_details(*args)
+            report.set_details(*args)
 
             try:
-                expected = Incident.objects.get(pk=1).incidentdetail
+                expected = Report.objects.get(pk=1).reportdetail
                 self.fail()
             except ObjectDoesNotExist:
                 expected = None
             self.assertIsNone(expected)
 
-    def test_model_incident_rate(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_rate(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         rating = 1
 
-        incident.rate(user, rating)
+        report.rate(user, rating)
 
-        expected = Incident.objects.get(pk=1).incidentrating_set.all()
+        expected = Report.objects.get(pk=1).reportrating_set.all()
 
         self.assertEquals(1, len(expected))
         self.assertEquals(user, expected[0].user)
         self.assertEquals(rating, expected[0].value)
 
-    def test_model_incident_rate_invalid(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_rate_invalid(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         args_list = [
@@ -134,27 +134,27 @@ class TestModelIncident(TransactionTestCase):
         ]
 
         for args in args_list:
-            incident.rate(*args)
+            report.rate(*args)
 
-            expected = Incident.objects.get(pk=1).incidentrating_set.all()
+            expected = Report.objects.get(pk=1).reportrating_set.all()
             self.assertNotEquals(1, len(expected))
 
-    def test_model_incident_add_comment(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_add_comment(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         text = 'Este es un comentario de prueba'
 
-        incident.add_comment(user, text)
+        report.add_comment(user, text)
 
-        expected = Incident.objects.get(pk=1).incidentcomment_set.all()
+        expected = Report.objects.get(pk=1).reportcomment_set.all()
 
         self.assertEquals(1, len(expected))
         self.assertEquals(user, expected[0].user)
         self.assertEquals(text, expected[0].text)
 
-    def test_model_incident_add_comment_invalid(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_add_comment_invalid(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
 
         args_list = [
@@ -164,29 +164,29 @@ class TestModelIncident(TransactionTestCase):
         ]
 
         for args in args_list:
-            incident.add_comment(*args)
+            report.add_comment(*args)
 
-            expected = Incident.objects.get(pk=1).incidentcomment_set.all()
+            expected = Report.objects.get(pk=1).reportcomment_set.all()
             self.assertNotEquals(1, len(expected))
 
-    def test_model_incident_add_media(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_add_media(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
         source = MediaSource.objects.get(pk=1)
 
         url = 'http://fake_url'
 
-        incident.add_media(user, source, url)
+        report.add_media(user, source, url)
 
-        expected = Incident.objects.get(pk=1).incidentmedia_set.all()
+        expected = Report.objects.get(pk=1).reportmedia_set.all()
 
         self.assertEquals(1, len(expected))
         self.assertEquals(user, expected[0].user)
         self.assertEquals(source, expected[0].source)
         self.assertEquals(url, expected[0].url)
 
-    def test_model_incident_add_media_invalid(self):
-        incident = Incident.objects.get(pk=1)
+    def test_model_report_add_media_invalid(self):
+        report = Report.objects.get(pk=1)
         user = User.objects.get(pk=1)
         source = MediaSource.objects.get(pk=1)
 
@@ -198,7 +198,7 @@ class TestModelIncident(TransactionTestCase):
         ]
 
         for args in args_list:
-            incident.add_media(*args)
+            report.add_media(*args)
 
-            expected = Incident.objects.get(pk=1).incidentmedia_set.all()
+            expected = Report.objects.get(pk=1).reportmedia_set.all()
             self.assertNotEquals(1, len(expected))

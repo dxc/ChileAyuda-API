@@ -7,7 +7,7 @@ from django.test.testcases import TransactionTestCase
 from rest_framework.test import APIClient
 
 
-class TestViewSetIncident(TransactionTestCase):
+class TestViewSetReport(TransactionTestCase):
 
     fixtures = [
         'users.json',
@@ -19,15 +19,15 @@ class TestViewSetIncident(TransactionTestCase):
         'styles.json',
         'categories.json',
         'media_sources.json',
-        'incidents.json',
+        'reports.json',
     ]
 
     def setUp(self):
-        super(TestViewSetIncident, self).setUp()
+        super(TestViewSetReport, self).setUp()
         self.client = APIClient()
 
     def test_http_get(self):
-        response = self.client.get('/0/incidents/')
+        response = self.client.get('/0/reports/')
 
         data = json.loads(response.content)
 

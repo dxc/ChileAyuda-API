@@ -22,9 +22,9 @@ from api.views.province import ProvinceViewSet
 from api.views.commune import CommuneViewSet
 from api.views.disaster import DisasterViewSet
 from api.views.category import CategoryViewSet
-from api.views.incident import IncidentViewSet
-from api.views.incidentcomment import IncidentCommentViewSet
-from api.views.incidentmedia import IncidentMediaViewSet
+from api.views.report import ReportViewSet
+from api.views.reportcomment import ReportCommentViewSet
+from api.views.reportmedia import ReportMediaViewSet
 
 
 router = routers.DefaultRouter()
@@ -35,9 +35,9 @@ router.register(r'communes', CommuneViewSet, 'Commune')
 router.register(r'disasters', DisasterViewSet, 'Disaster')
 router.register(r'categories', CategoryViewSet, 'Category')
 
-router.register(r'incidents', IncidentViewSet, 'Incident')
-router.register(r'incidents_comments', IncidentCommentViewSet, 'IncidentComment')
-router.register(r'incidents_media', IncidentMediaViewSet, 'IncidentMedia')
+router.register(r'reports', ReportViewSet, 'Report')
+router.register(r'reports_comments', ReportCommentViewSet, 'ReportsComment')
+router.register(r'reports_media', ReportMediaViewSet, 'ReportsMedia')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),

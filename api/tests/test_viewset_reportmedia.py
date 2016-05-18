@@ -7,7 +7,7 @@ from django.test.testcases import TransactionTestCase
 from rest_framework.test import APIClient
 
 
-class TestViewSetIncidentComments(TransactionTestCase):
+class TestViewSetReportMedia(TransactionTestCase):
 
     fixtures = [
         'users.json',
@@ -19,17 +19,17 @@ class TestViewSetIncidentComments(TransactionTestCase):
         'styles.json',
         'categories.json',
         'media_sources.json',
-        'incidents.json',
-        'incident_comments.json'
+        'reports.json',
+        'reports_media.json'
     ]
 
     def setUp(self):
-        super(TestViewSetIncidentComments, self).setUp()
+        super(TestViewSetReportMedia, self).setUp()
         self.client = APIClient()
 
     def test_http_get(self):
         response = self.client.get(
-            '/0/incidents_comments/?incident={0:d}'.format(1)
+            '/0/reports_media/?report={0:d}'.format(1)
         )
 
         self.assertEquals(200, response.status_code)
@@ -38,24 +38,24 @@ class TestViewSetIncidentComments(TransactionTestCase):
     def test_http_get_invalid(self):
         params_list = [
             '',
-            '?incident=',
-            '?incident=null',
+            '?report=',
+            '?report=null',
         ]
 
         for params in params_list:
-            response = self.client.get('/0/incidents_comments/' + params)
+            response = self.client.get('/0/reports_media/' + params)
 
             data = json.loads(response.content)
 
             self.assertEquals(400, response.status_code)
             self.assertEquals(1, len(data))
-            self.assertIn('Incident integer id required.', data)
+            self.assertIn('Report integer id required.', data)
 
     def test_http_get_not_found(self):
-        response = self.client.get('/0/incidents_comments/?incident=999999999')
+        response = self.client.get('/0/reports_media/?report=999999999')
 
         data = json.loads(response.content)
 
         self.assertEquals(404, response.status_code)
         self.assertEquals(1, len(data))
-        self.assertEquals('Incident does not exist.', data['detail'])
+        self.assertEquals('Report does not exist.', data['detail'])

@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from .models import Region, Province, Commune, Coordinates, Disaster, Style, \
-                    Category, MediaSource, IncidentMedia, IncidentDetail,    \
-                    IncidentValidation, IncidentRating, IncidentComment,     \
-                    Incident
+                    Category, MediaSource, ReportMedia, ReportDetail,    \
+                    ReportValidation, ReportRating, ReportComment,     \
+                    Report
 
 
 class RecursiveField(serializers.Serializer):
@@ -122,19 +122,19 @@ class MediaSourceSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name',)
 
 
-class IncidentValidationSerializer(serializers.HyperlinkedModelSerializer):
+class ReportValidationSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer()
 
     class Meta:
-        model = IncidentValidation
+        model = ReportValidation
         fields = ('user', 'date', 'text')
 
 
-class IncidentDetailSerializer(serializers.HyperlinkedModelSerializer):
+class ReportDetailSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = IncidentDetail
+        model = ReportDetail
         fields = (
             'missing_people',
             'injured_people',
@@ -145,35 +145,35 @@ class IncidentDetailSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # TODO: Check
-class IncidentRatingSerializer(serializers.HyperlinkedModelSerializer):
+class ReportRatingSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer()
 
     class Meta:
-        model = IncidentRating
+        model = ReportRating
         fields = ('user', 'date', 'value')
 
 
-class IncidentCommentSerializer(serializers.HyperlinkedModelSerializer):
+class ReportCommentSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer()
 
     class Meta:
-        model = IncidentComment
+        model = ReportComment
         fields = ('user', 'date', 'text')
 
 
-class IncidentMediaSerializer(serializers.HyperlinkedModelSerializer):
+class ReportMediaSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer()
     source = MediaSourceSerializer()
 
     class Meta:
-        model = IncidentMedia
+        model = ReportMedia
         fields = ('user', 'date', 'source', 'url')
 
 
-class IncidentSerializer(serializers.HyperlinkedModelSerializer):
+class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     disaster = DisasterSerializer()
     categories = CategorySerializer(many=True)
@@ -184,7 +184,7 @@ class IncidentSerializer(serializers.HyperlinkedModelSerializer):
     coordinates = CoordinatesSerializer()
 
     class Meta:
-        model = Incident
+        model = Report
         fields = (
             'disaster',
             'categories',
