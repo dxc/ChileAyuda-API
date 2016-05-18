@@ -29,6 +29,7 @@ SECRET_KEY = 'xa2-+zd)e=x4)&uj=*4k^o*zg5tmilwa+lim=c(!j(et(3dg9p'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ORIGIN_WHITELIST = ()
 
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = ''
@@ -70,6 +71,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social.apps.django_app.default',
     'rest_framework_social_oauth2',
+    'corsheaders',
     'api',
 ]
 
@@ -88,6 +90,7 @@ AUTHENTICATION_BACKENDS = (
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
