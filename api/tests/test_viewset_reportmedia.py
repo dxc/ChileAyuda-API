@@ -15,7 +15,7 @@ class TestViewSetReportMedia(TransactionTestCase):
         'provinces.json',
         'communes.json',
         'coordinates.json',
-        'disasters.json',
+        'incidents.json',
         'styles.json',
         'categories.json',
         'media_sources.json',

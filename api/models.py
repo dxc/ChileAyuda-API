@@ -47,7 +47,7 @@ class Coordinates(models.Model):
         return '{0:f}, {1:f}'.format(self.latitude, self.longitude)
 
 
-class Disaster(models.Model):
+class Incident(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()
 
@@ -92,7 +92,7 @@ class MediaSource(models.Model):
 
 
 class Report(models.Model):
-    disaster = models.ForeignKey(Disaster)
+    incident = models.ForeignKey(Incident)
     categories = models.ManyToManyField(Category)
 
     name = models.CharField(max_length=64)
@@ -105,7 +105,7 @@ class Report(models.Model):
     coordinates = models.ForeignKey(Coordinates)
 
     def __unicode__(self):
-        return '{0:s} - {1:s}'.format(self.disaster.name, self.name)
+        return '{0:s} - {1:s}'.format(self.incident.name, self.name)
 
     def validate(self, user, text):
         if user is None:

@@ -3,7 +3,7 @@
 		"pk": 1,
 		"model": "api.report",
 		"fields": {
-			"disaster": 1,
+			"incident": 1,
 			"categories": [1],
 			"name": "Reporte de prueba",
 			"description": "Este es un reporte de prueba.",

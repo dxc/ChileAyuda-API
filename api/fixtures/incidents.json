@@ -1,0 +1,14 @@
+[
+	{
+		"pk": 1,
+		"model": "api.incident",
+		"fields": {
+			"name": "Incidente de prueba en Beauchef",
+			"description": "Esta es una prueba de un incidente.",
+			"user": 1,
+			"date": "2016-05-16T04:00:01Z",
+			"commune": 1,
+			"coordinates": 1
+		}
+	}
+]

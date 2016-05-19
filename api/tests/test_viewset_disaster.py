@@ -7,7 +7,7 @@ from django.test.testcases import TransactionTestCase
 from rest_framework.test import APIClient
 
 
-class TestViewSetDisaster(TransactionTestCase):
+class TestViewSetIncident(TransactionTestCase):
 
     fixtures = [
         'regions.json',
@@ -15,15 +15,15 @@ class TestViewSetDisaster(TransactionTestCase):
         'communes.json',
         'coordinates.json',
         'users.json',
-        'disasters.json'
+        'incidents.json'
     ]
 
     def setUp(self):
-        super(TestViewSetDisaster, self).setUp()
+        super(TestViewSetIncident, self).setUp()
         self.client = APIClient()
 
     def test_http_get(self):
-        response = self.client.get('/0/disasters/')
+        response = self.client.get('/0/incidents/')
 
         data = json.loads(response.content)
 

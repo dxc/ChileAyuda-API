@@ -3,10 +3,10 @@ from __future__ import unicode_literals
 
 from django.test.testcases import TransactionTestCase
 
-from ..models import Disaster
+from ..models import Incident
 
 
-class TestModelDisaster(TransactionTestCase):
+class TestModelIncident(TransactionTestCase):
 
     fixtures = [
         'regions.json',
@@ -14,12 +14,12 @@ class TestModelDisaster(TransactionTestCase):
         'communes.json',
         'coordinates.json',
         'users.json',
-        'disasters.json'
+        'incidents.json'
     ]
 
-    def test_model_disaster_unicode(self):
-        expected = Disaster.objects.get(pk=1)
+    def test_model_incident_unicode(self):
+        expected = Incident.objects.get(pk=1)
         self.assertEquals(
-            'Desastre de prueba en Beauchef',
+            'Incidente de prueba en Beauchef',
             unicode(expected)
         )

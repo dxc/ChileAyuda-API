@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Region, Province, Commune, Coordinates, Disaster, Style, \
-                    Category, MediaSource, ReportMedia, ReportDetail,    \
-                    ReportValidation, ReportRating, ReportComment,     \
-                    Report
+from .models import Region, Province, Commune, Coordinates, Incident, \
+                    Category, MediaSource, ReportMedia, ReportDetail, \
+                    ReportValidation, ReportRating, ReportComment,    \
+                    Report, Style
 
 
 class RecursiveField(serializers.Serializer):
@@ -81,14 +81,14 @@ class CoordinatesSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('latitude', 'longitude')
 
 
-class DisasterSerializer(serializers.HyperlinkedModelSerializer):
+class IncidentSerializer(serializers.HyperlinkedModelSerializer):
 
     coordinates = CoordinatesSerializer()
     commune = CommuneWithProvinceSerializer()
     user = UserSerializer()
 
     class Meta:
-        model = Disaster
+        model = Incident
         fields = (
             'name',
             'description',
@@ -176,7 +176,7 @@ class ReportMediaSerializer(serializers.HyperlinkedModelSerializer):
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
-    disaster = DisasterSerializer()
+    incident = IncidentSerializer()
     categories = CategorySerializer(many=True)
 
     user = UserSerializer()
@@ -187,7 +187,7 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Report
         fields = (
-            'disaster',
+            'incident',
             'categories',
             'name',
             'description',

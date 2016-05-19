@@ -20,7 +20,7 @@ from api.views.user import UserViewSet
 from api.views.region import RegionViewSet
 from api.views.province import ProvinceViewSet
 from api.views.commune import CommuneViewSet
-from api.views.disaster import DisasterViewSet
+from api.views.incident import IncidentViewSet
 from api.views.category import CategoryViewSet
 from api.views.report import ReportViewSet
 from api.views.reportcomment import ReportCommentViewSet
@@ -32,7 +32,7 @@ router.register(r'users', UserViewSet, 'User')
 router.register(r'regions', RegionViewSet, 'Region')
 router.register(r'provinces', ProvinceViewSet, 'Province')
 router.register(r'communes', CommuneViewSet, 'Commune')
-router.register(r'disasters', DisasterViewSet, 'Disaster')
+router.register(r'incidents', IncidentViewSet, 'Incident')
 router.register(r'categories', CategoryViewSet, 'Category')
 
 router.register(r'reports', ReportViewSet, 'Report')

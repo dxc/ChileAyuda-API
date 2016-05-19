@@ -16,7 +16,7 @@ class TestModelReport(TransactionTestCase):
         'provinces.json',
         'communes.json',
         'coordinates.json',
-        'disasters.json',
+        'incidents.json',
         'styles.json',
         'categories.json',
         'media_sources.json',
@@ -27,7 +27,7 @@ class TestModelReport(TransactionTestCase):
         expected = Report.objects.get(pk=1)
 
         self.assertEquals(
-            'Desastre de prueba en Beauchef - Reporte de prueba',
+            'Incidente de prueba en Beauchef - Reporte de prueba',
             unicode(expected)
         )
 
