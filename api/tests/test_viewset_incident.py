@@ -30,6 +30,6 @@ class TestViewSetIncident(TransactionTestCase):
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(data))
         self.assertEquals(
-            {'latitude': -33.4583573, 'longitude': -70.6631088},
+            {'id': 1, 'latitude': -33.4583573, 'longitude': -70.6631088},
             data[0]['coordinates']
         )

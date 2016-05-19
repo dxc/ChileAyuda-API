@@ -23,6 +23,6 @@ class TestViewSetCategory(TransactionTestCase):
         self.assertEquals(200, response.status_code)
         self.assertEquals(2, len(data))
         self.assertEquals(
-            {'color': '#FF0000', 'name': 'Emergencia'},
+            {'id': 1, 'color': '#FF0000', 'name': 'Emergencia'},
             data[0]['style']
         )
