@@ -78,7 +78,7 @@ class CoordinatesSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Coordinates
-        fields = ('latitude', 'longitude')
+        fields = ('id', 'latitude', 'longitude')
 
 
 class IncidentSerializer(serializers.HyperlinkedModelSerializer):
@@ -90,6 +90,7 @@ class IncidentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Incident
         fields = (
+            'id',
             'name',
             'description',
             'user',
@@ -103,7 +104,7 @@ class StyleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Style
-        fields = ('name', 'color')
+        fields = ('id', 'name', 'color')
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
@@ -120,7 +121,7 @@ class MediaSourceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = MediaSource
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 
 class ReportValidationSerializer(serializers.HyperlinkedModelSerializer):
@@ -129,7 +130,7 @@ class ReportValidationSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ReportValidation
-        fields = ('user', 'date', 'text')
+        fields = ('id', 'user', 'date', 'text')
 
 
 class ReportDetailSerializer(serializers.HyperlinkedModelSerializer):
@@ -152,7 +153,7 @@ class ReportRatingSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ReportRating
-        fields = ('user', 'date', 'value')
+        fields = ('id', 'user', 'date', 'value')
 
 
 class ReportCommentSerializer(serializers.HyperlinkedModelSerializer):
@@ -161,7 +162,7 @@ class ReportCommentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ReportComment
-        fields = ('user', 'date', 'text')
+        fields = ('id', 'user', 'date', 'text')
 
 
 class ReportMediaSerializer(serializers.HyperlinkedModelSerializer):
@@ -171,7 +172,7 @@ class ReportMediaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ReportMedia
-        fields = ('user', 'date', 'source', 'url')
+        fields = ('id', 'user', 'date', 'source', 'url')
 
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
@@ -187,6 +188,7 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Report
         fields = (
+            'id',
             'incident',
             'categories',
             'name',
