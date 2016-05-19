@@ -11,7 +11,7 @@ class TestModelCommune(TransactionTestCase):
     fixtures = ['regions.json', 'provinces.json', 'communes.json']
 
     def test_model_commune_unicode(self):
-        expected = Commune.objects.get(pk=1)
+        expected = Commune.objects.get(pk=13101)
         self.assertEquals(
             'Región Metropolitana - Santiago - Santiago',
             unicode(expected)

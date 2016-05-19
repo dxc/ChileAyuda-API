@@ -11,5 +11,5 @@ class TestModelProvince(TransactionTestCase):
     fixtures = ['regions.json', 'provinces.json']
 
     def test_model_province_unicode(self):
-        expected = Province.objects.get(pk=1)
+        expected = Province.objects.get(pk=131)
         self.assertEquals('Región Metropolitana - Santiago', unicode(expected))

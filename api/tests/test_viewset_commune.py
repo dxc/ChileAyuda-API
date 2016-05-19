@@ -16,7 +16,7 @@ class TestViewSetCommune(TransactionTestCase):
         self.client = APIClient()
 
     def test_http_get(self):
-        response = self.client.get('/0/communes/?province={0:d}'.format(1))
+        response = self.client.get('/0/communes/?province={0:d}'.format(131))
 
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(json.loads(response.content)))
