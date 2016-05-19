@@ -192,7 +192,7 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer()
 
-    commune = CommuneSerializer()
+    commune = CommuneWithProvinceSerializer()
     coordinates = CoordinatesSerializer()
 
     class Meta:
