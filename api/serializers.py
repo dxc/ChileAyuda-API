@@ -12,8 +12,9 @@ from .models import Region, Province, Commune, Coordinates, Disaster, Style, \
 
 class RecursiveField(serializers.Serializer):
 
-    def to_native(self, value):
-        return self.parent.to_native(value)
+    def to_representation(self, value):
+        serializer = self.parent.parent.__class__(value, context=self.context)
+        return serializer.data
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -107,12 +108,12 @@ class StyleSerializer(serializers.HyperlinkedModelSerializer):
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
-    parent = RecursiveField()
+    children = RecursiveField(many=True)
     style = StyleSerializer()
 
     class Meta:
         model = Category
-        fields = ('name', 'parent', 'style')
+        fields = ('id', 'name', 'style', 'children')
 
 
 class MediaSourceSerializer(serializers.HyperlinkedModelSerializer):

@@ -41,6 +41,6 @@ router.register(r'reports_media', ReportMediaViewSet, 'ReportsMedia')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),
+    url(r'^0/auth/', include('rest_framework_social_oauth2.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
 ]

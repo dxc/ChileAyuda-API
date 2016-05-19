@@ -21,7 +21,7 @@ class TestViewSetCategory(TransactionTestCase):
         data = json.loads(response.content)
 
         self.assertEquals(200, response.status_code)
-        self.assertEquals(3, len(data))
+        self.assertEquals(2, len(data))
         self.assertEquals(
             {'color': '#FF0000', 'name': 'Emergencia'},
             data[0]['style']
