@@ -107,7 +107,17 @@ class StyleSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'color')
 
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategoryWithParentSerializer(serializers.ModelSerializer):
+
+    style = StyleSerializer()
+
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'style', 'parent')
+        depth = 2
+
+
+class CategoryWithChildrenSerializer(serializers.HyperlinkedModelSerializer):
 
     children = RecursiveField(many=True)
     style = StyleSerializer()
@@ -178,7 +188,7 @@ class ReportMediaSerializer(serializers.HyperlinkedModelSerializer):
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     incident = IncidentSerializer()
-    categories = CategorySerializer(many=True)
+    categories = CategoryWithParentSerializer(many=True)
 
     user = UserSerializer()
 

@@ -15,13 +15,17 @@ class ReportViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         incident_id = self.request.query_params.get('incident')
 
-        if not is_integer(incident_id):
-            raise serializers.ValidationError(
-                'Incident integer id required.'
-            )
-        try:
-            incident = Incident.objects.get(pk=incident_id)
-        except ObjectDoesNotExist:
-            raise ObjectNotFound('Incident')
+        report_id = self.kwargs.get('pk')
 
-        return Report.objects.filter(incident=incident)
+        if report_id is not None and is_integer(report_id):
+            return Report.objects.filter(pk=report_id)
+        elif is_integer(incident_id):
+            try:
+                incident = Incident.objects.get(pk=incident_id)
+            except ObjectDoesNotExist:
+                raise ObjectNotFound('Incident')
+
+            return Report.objects.filter(incident=incident)
+        raise serializers.ValidationError(
+            'Incident integer id required.'
+        )

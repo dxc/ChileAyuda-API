@@ -26,13 +26,21 @@ class TestViewSetReport(TransactionTestCase):
         super(TestViewSetReport, self).setUp()
         self.client = APIClient()
 
-    def test_http_get(self):
+    def test_http_get_list(self):
         response = self.client.get('/0/reports/?incident={0:d}'.format(1))
 
         data = json.loads(response.content)
 
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(data))
+
+    def test_http_get_one(self):
+        response = self.client.get('/0/reports/{0:d}/'.format(1))
+
+        data = json.loads(response.content)
+
+        self.assertEquals(200, response.status_code)
+        self.assertEquals(dict, type(data))
 
     def test_http_get_invalid(self):
         params_list = [
