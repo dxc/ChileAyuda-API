@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.exceptions import ObjectDoesNotExist
-from rest_framework import viewsets, serializers
+from rest_framework import viewsets
 
-from ..libs import ObjectNotFound, is_integer
-from ..models import Report, ReportMedia
+from ..libs import is_integer, InvalidRequestException
+from ..models import ReportMedia
 from ..serializers import ReportMediaSerializer
 
 
@@ -13,15 +12,20 @@ class ReportMediaViewSet(viewsets.ModelViewSet):
     serializer_class = ReportMediaSerializer
 
     def get_queryset(self):
+        incident_id = self.kwargs.get('incident_pk')
         report_id = self.kwargs.get('report_pk')
+        media_id = self.kwargs.get('pk')
 
-        if not is_integer(report_id):
-            raise serializers.ValidationError(
-                'Report integer id required.'
+        if is_integer(incident_id) and is_integer(report_id) and media_id is None:
+            return ReportMedia.objects.filter(
+                report__incident=incident_id,
+                report=report_id
             )
-        try:
-            report = Report.objects.get(pk=report_id)
-        except ObjectDoesNotExist:
-            raise ObjectNotFound('Report')
-
-        return ReportMedia.objects.filter(report=report)
+        elif is_integer(incident_id) and is_integer(report_id) and is_integer(media_id):
+            return ReportMedia.objects.filter(
+                report__incident=incident_id,
+                report=report_id,
+                pk=media_id
+            )
+        else:
+            raise InvalidRequestException('Invalid parameters.')

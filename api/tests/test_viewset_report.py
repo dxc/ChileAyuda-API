@@ -27,7 +27,7 @@ class TestViewSetReport(TransactionTestCase):
         self.client = APIClient()
 
     def test_http_get_list(self):
-        response = self.client.get('/0/reports/?incident={0:d}'.format(1))
+        response = self.client.get('/0/incidents/{0:d}/reports/'.format(1))
 
         data = json.loads(response.content)
 
@@ -35,7 +35,7 @@ class TestViewSetReport(TransactionTestCase):
         self.assertEquals(1, len(data))
 
     def test_http_get_one(self):
-        response = self.client.get('/0/reports/{0:d}/'.format(1))
+        response = self.client.get('/0/incidents/{0:d}/reports/{1:d}/'.format(1, 1))
 
         data = json.loads(response.content)
 
@@ -43,26 +43,25 @@ class TestViewSetReport(TransactionTestCase):
         self.assertEquals(dict, type(data))
 
     def test_http_get_invalid(self):
-        params_list = [
-            '',
-            '?incident=',
-            '?incident=null',
+        urls = [
+            '/0/incidents/null/reports/',
+            '/0/incidents/1/reports/null/',
         ]
 
-        for params in params_list:
-            response = self.client.get('/0/reports/' + params)
+        for url in urls:
+            response = self.client.get(url)
 
             data = json.loads(response.content)
 
             self.assertEquals(400, response.status_code)
             self.assertEquals(1, len(data))
-            self.assertIn('Incident integer id required.', data)
+            self.assertIn('Invalid parameters.', data['detail'])
 
     def test_http_get_not_found(self):
-        response = self.client.get('/0/reports/?incident=999999999')
+        response = self.client.get('/0/incidents/{0:d}/reports/{1:d}/'.format(1, 999999999))
 
         data = json.loads(response.content)
 
         self.assertEquals(404, response.status_code)
-        self.assertEquals(1, len(data))
-        self.assertEquals('Incident does not exist.', data['detail'])
+        self.assertEquals(dict, type(data))
+        self.assertEquals('Not found.', data['detail'])

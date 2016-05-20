@@ -36,16 +36,19 @@ router.register(r'sessions', SessionViewSet, 'Session')
 router.register(r'regions', RegionViewSet, 'Region')
 router.register(r'provinces', ProvinceViewSet, 'Province')
 router.register(r'communes', CommuneViewSet, 'Commune')
-router.register(r'incidents', IncidentViewSet, 'Incident')
 router.register(r'categories', CategoryViewSet, 'Category')
-router.register(r'reports', ReportViewSet, 'Report')
 
-reports_router = routers.NestedSimpleRouter(router, r'reports', lookup='report')
-reports_router.register(r'comments', ReportCommentViewSet, base_name='report-comments')
+router.register(r'incidents', IncidentViewSet, 'Incident')
+incidents_router = routers.NestedSimpleRouter(router, r'incidents', lookup='incident')
+incidents_router.register(r'reports', ReportViewSet, 'Report')
+
+reports_router = routers.NestedSimpleRouter(incidents_router, r'reports', lookup='report')
+reports_router.register(r'comments', ReportCommentViewSet, base_name='report-comment')
 reports_router.register(r'media', ReportMediaViewSet, base_name='report-media')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),
+    url(r'^0/', include(incidents_router.urls)),
     url(r'^0/', include(reports_router.urls)),
     url(r'^0/auth/', include('rest_framework_social_oauth2.urls')),
     url(r'^0/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
