@@ -99,7 +99,7 @@
 		"pk": 13,
 		"model": "api.region",
 		"fields": {
-			"name": "Región Metropolitana de Santiago",
+			"name": "Metropolitana de Santiago",
 			"iso_3166_2": "CL-RM"
 		}
 	},

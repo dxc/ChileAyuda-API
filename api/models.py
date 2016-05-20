@@ -47,7 +47,7 @@ class Coordinates(models.Model):
         return '{0:f}, {1:f}'.format(self.latitude, self.longitude)
 
 
-class Disaster(models.Model):
+class Incident(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()
 
@@ -91,8 +91,8 @@ class MediaSource(models.Model):
         return '{0:s}'.format(self.name)
 
 
-class Incident(models.Model):
-    disaster = models.ForeignKey(Disaster)
+class Report(models.Model):
+    incident = models.ForeignKey(Incident)
     categories = models.ManyToManyField(Category)
 
     name = models.CharField(max_length=64)
@@ -105,13 +105,13 @@ class Incident(models.Model):
     coordinates = models.ForeignKey(Coordinates)
 
     def __unicode__(self):
-        return '{0:s} - {1:s}'.format(self.disaster.name, self.name)
+        return '{0:s} - {1:s}'.format(self.incident.name, self.name)
 
     def validate(self, user, text):
         if user is None:
             return False
-        validation = IncidentValidation(
-            incident=self,
+        validation = ReportValidation(
+            report=self,
             user=user,
             text=text,
             date=timezone.now()
@@ -122,15 +122,15 @@ class Incident(models.Model):
     def set_details(self, user, details):
         if user is None or details is None or len(details.keys()) == 0:
             return
-        details = IncidentDetail(**details)
-        details.incident = self
+        details = ReportDetail(**details)
+        details.report = self
         details.save()
 
     def rate(self, user, value):
         if user is None or not is_integer(value) or value not in [1, -1]:
             return
-        rating = IncidentRating(
-            incident=self,
+        rating = ReportRating(
+            report=self,
             user=user,
             date=timezone.now(),
             value=value
@@ -140,8 +140,8 @@ class Incident(models.Model):
     def add_comment(self, user, text):
         if user is None or text is None or text.strip() == '':
             return
-        media = IncidentComment(
-            incident=self,
+        media = ReportComment(
+            report=self,
             user=user,
             text=text,
             date=timezone.now()
@@ -151,8 +151,8 @@ class Incident(models.Model):
     def add_media(self, user, source, url):
         if user is None or source is None or url is None or url.strip() == '':
             return
-        media = IncidentMedia(
-            incident=self,
+        media = ReportMedia(
+            report=self,
             user=user,
             source=source,
             url=url,
@@ -161,16 +161,16 @@ class Incident(models.Model):
         media.save()
 
 
-class IncidentValidation(models.Model):
-    incident = models.ForeignKey(Incident)
+class ReportValidation(models.Model):
+    report = models.ForeignKey(Report)
 
     user = models.ForeignKey(User)
     date = models.DateTimeField()
     text = models.TextField(blank=True, null=True)
 
 
-class IncidentDetail(models.Model):
-    incident = models.OneToOneField(Incident)
+class ReportDetail(models.Model):
+    report = models.OneToOneField(Report, related_name='details')
 
     missing_people = models.IntegerField(blank=True, null=True)
     injured_people = models.IntegerField(blank=True, null=True)
@@ -180,8 +180,8 @@ class IncidentDetail(models.Model):
     damaged_vehicles = models.IntegerField(blank=True, null=True)
 
 
-class IncidentRating(models.Model):
-    incident = models.ForeignKey(Incident)
+class ReportRating(models.Model):
+    report = models.ForeignKey(Report)
 
     user = models.ForeignKey(User)
     date = models.DateTimeField()
@@ -189,8 +189,8 @@ class IncidentRating(models.Model):
     value = models.IntegerField()
 
 
-class IncidentComment(models.Model):
-    incident = models.ForeignKey(Incident)
+class ReportComment(models.Model):
+    report = models.ForeignKey(Report)
 
     user = models.ForeignKey(User)
     date = models.DateTimeField()
@@ -198,8 +198,8 @@ class IncidentComment(models.Model):
     text = models.TextField()
 
 
-class IncidentMedia(models.Model):
-    incident = models.ForeignKey(Incident)
+class ReportMedia(models.Model):
+    report = models.ForeignKey(Report)
 
     user = models.ForeignKey(User)
     date = models.DateTimeField()

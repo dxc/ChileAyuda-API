@@ -14,32 +14,42 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from rest_framework import routers
+from rest_framework_nested import routers
 
 from api.views.user import UserViewSet
+from api.views.session import SessionViewSet
 from api.views.region import RegionViewSet
 from api.views.province import ProvinceViewSet
 from api.views.commune import CommuneViewSet
-from api.views.disaster import DisasterViewSet
-from api.views.category import CategoryViewSet
 from api.views.incident import IncidentViewSet
-from api.views.incidentcomment import IncidentCommentViewSet
-from api.views.incidentmedia import IncidentMediaViewSet
+from api.views.category import CategoryViewSet
+from api.views.report import ReportViewSet
+from api.views.reportcomment import ReportCommentViewSet
+from api.views.reportmedia import ReportMediaViewSet
 
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
+
 router.register(r'users', UserViewSet, 'User')
+router.register(r'sessions', SessionViewSet, 'Session')
+
 router.register(r'regions', RegionViewSet, 'Region')
 router.register(r'provinces', ProvinceViewSet, 'Province')
 router.register(r'communes', CommuneViewSet, 'Commune')
-router.register(r'disasters', DisasterViewSet, 'Disaster')
 router.register(r'categories', CategoryViewSet, 'Category')
 
 router.register(r'incidents', IncidentViewSet, 'Incident')
-router.register(r'incidents_comments', IncidentCommentViewSet, 'IncidentComment')
-router.register(r'incidents_media', IncidentMediaViewSet, 'IncidentMedia')
+incidents_router = routers.NestedSimpleRouter(router, r'incidents', lookup='incident')
+incidents_router.register(r'reports', ReportViewSet, 'Report')
+
+reports_router = routers.NestedSimpleRouter(incidents_router, r'reports', lookup='report')
+reports_router.register(r'comments', ReportCommentViewSet, base_name='report-comment')
+reports_router.register(r'media', ReportMediaViewSet, base_name='report-media')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^0/', include(incidents_router.urls)),
+    url(r'^0/', include(reports_router.urls)),
+    url(r'^0/auth/', include('rest_framework_social_oauth2.urls')),
+    url(r'^0/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

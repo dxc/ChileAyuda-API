@@ -9,7 +9,7 @@ from ..models import Province, Commune
 from ..serializers import CommuneSerializer
 
 
-class CommuneViewSet(viewsets.ModelViewSet):
+class CommuneViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CommuneSerializer
 
     def get_queryset(self):

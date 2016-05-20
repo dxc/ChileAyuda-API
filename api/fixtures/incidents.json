@@ -3,14 +3,12 @@
 		"pk": 1,
 		"model": "api.incident",
 		"fields": {
-			"disaster": 1,
-			"categories": [1],
-			"name": "Incidente de prueba",
-			"description": "Este es un incidente de prueba.",
-			"date": "2016-05-16T04:00:03Z",
+			"name": "Incidente de prueba en Beauchef",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis malesuada nisl ut mattis. Fusce at purus at ipsum tincidunt dictum malesuada vel lorem. Phasellus vel arcu egestas, placerat felis vitae, tristique erat. Suspendisse semper tortor a magna tincidunt faucibus. Nulla mollis, mi quis hendrerit porttitor, elit lacus sodales mauris, non semper elit metus non erat. Phasellus quis elit libero. Maecenas vehicula cursus ligula, non ultricies urna consectetur non. Vestibulum elementum nulla enim, eget maximus ipsum sagittis at. Mauris feugiat tempus orci ac tincidunt. Nulla fringilla justo quis velit accumsan, porttitor viverra ante dictum. Fusce ac imperdiet quam. Integer sagittis sagittis euismod. Suspendisse vel libero at ipsum vulputate posuere. Sed in velit tristique, posuere dui vitae, pellentesque nisl. Donec aliquam pharetra diam in interdum.",
 			"user": 1,
-			"commune": 1,
-			"coordinates": 2
+			"date": "2016-05-16T04:00:01Z",
+			"commune": 13101,
+			"coordinates": 1
 		}
 	}
 ]

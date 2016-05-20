@@ -10,16 +10,12 @@ from rest_framework.test import APIClient
 class TestViewSetIncident(TransactionTestCase):
 
     fixtures = [
-        'users.json',
         'regions.json',
         'provinces.json',
         'communes.json',
         'coordinates.json',
-        'disasters.json',
-        'styles.json',
-        'categories.json',
-        'media_sources.json',
-        'incidents.json',
+        'users.json',
+        'incidents.json'
     ]
 
     def setUp(self):
@@ -33,3 +29,7 @@ class TestViewSetIncident(TransactionTestCase):
 
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(data))
+        self.assertEquals(
+            {'id': 1, 'latitude': -33.4583573, 'longitude': -70.6631088},
+            data[0]['coordinates']
+        )

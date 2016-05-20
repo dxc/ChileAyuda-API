@@ -1,9 +1,9 @@
 [
 	{
 		"pk": 1,
-		"model": "api.incidentcomment",
+		"model": "api.reportcomment",
 		"fields": {
-			"incident": 1,
+			"report": 1,
 			"user": 1,
 			"date": "2016-05-16T04:00:04Z",
 			"text": "Fake comment"

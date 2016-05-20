@@ -1,0 +1,339 @@
+[
+	{
+		"pk": 1,
+		"model": "api.category",
+		"fields": {
+			"name": "Emergencia",
+			"style": 1
+		}
+	},
+	{
+		"pk": 2,
+		"model": "api.category",
+		"fields": {
+			"name": "Estructura colapsada",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 3,
+		"model": "api.category",
+		"fields": {
+			"name": "Incendio",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 4,
+		"model": "api.category",
+		"fields": {
+			"name": "Personas atrapadas",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 5,
+		"model": "api.category",
+		"fields": {
+			"name": "Agua contaminada",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 6,
+		"model": "api.category",
+		"fields": {
+			"name": "Terremoto y replicas",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 7,
+		"model": "api.category",
+		"fields": {
+			"name": "Urgencia médica",
+			"style": 1,
+			"parent": 1
+		}
+	},
+	{
+		"pk": 8,
+		"model": "api.category",
+		"fields": {
+			"name": "Amenazas",
+			"style": 1
+		}
+	},
+	{
+		"pk": 9,
+		"model": "api.category",
+		"fields": {
+			"name": "Estructuras en riesgo",
+			"style": 1,
+			"parent": 8
+		}
+	},
+	{
+		"pk": 10,
+		"model": "api.category",
+		"fields": {
+			"name": "Problemas de seguridad",
+			"style": 1,
+			"parent": 8
+		}
+	},
+		{
+		"pk": 11,
+		"model": "api.category",
+		"fields": {
+			"name": "Vía en mal estado",
+			"style": 1,
+			"parent": 8
+		}
+	},
+	{
+		"pk": 12,
+		"model": "api.category",
+		"fields": {
+			"name": "Logística",
+			"style": 1
+		}
+	},
+	{
+		"pk": 13,
+		"model": "api.category",
+		"fields": {
+			"name": "Escasez de alimento para mascotas",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 14,
+		"model": "api.category",
+		"fields": {
+			"name": "Escasez de insumos no alimenticios",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 15,
+		"model": "api.category",
+		"fields": {
+			"name": "Circulacion bloqueada",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 16,
+		"model": "api.category",
+		"fields": {
+			"name": "Corte de energia",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 17,
+		"model": "api.category",
+		"fields": {
+			"name": "Escasez de alimentos",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 18,
+		"model": "api.category",
+		"fields": {
+			"name": "Falta de agua",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 19,
+		"model": "api.category",
+		"fields": {
+			"name": "Falta de Telecomunicaciones",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 20,
+		"model": "api.category",
+		"fields": {
+			"name": "Falta de combustible",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 21,
+		"model": "api.category",
+		"fields": {
+			"name": "Falta de medicinas y material medico",
+			"style": 1,
+			"parent": 12
+		}
+	},
+	{
+		"pk": 22,
+		"model": "api.category",
+		"fields": {
+			"name": "Respuesta",
+			"style": 1
+		}
+	},
+	{
+		"pk": 23,
+		"model": "api.category",
+		"fields": {
+			"name": "Alojamiento",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 24,
+		"model": "api.category",
+		"fields": {
+			"name": "Servicios de salud",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 25,
+		"model": "api.category",
+		"fields": {
+			"name": "Busqueda y rescate",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 26,
+		"model": "api.category",
+		"fields": {
+			"name": "Refugio",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 27,
+		"model": "api.category",
+		"fields": {
+			"name": "Distribucion de comida",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 28,
+		"model": "api.category",
+		"fields": {
+			"name": "Purificacion de agua e higiene",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 29,
+		"model": "api.category",
+		"fields": {
+			"name": "Productos basicos no alimenticios",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 30,
+		"model": "api.category",
+		"fields": {
+			"name": "Remocion de escombros",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 31,
+		"model": "api.category",
+		"fields": {
+			"name": "Morgue",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 32,
+		"model": "api.category",
+		"fields": {
+			"name": "Distribucion de agua",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 33,
+		"model": "api.category",
+		"fields": {
+			"name": "Punto de Donación",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 34,
+		"model": "api.category",
+		"fields": {
+			"name": "Evaluación de Necesidades Humanitarias",
+			"style": 1,
+			"parent": 22
+		}
+	},
+	{
+		"pk": 35,
+		"model": "api.category",
+		"fields": {
+			"name": "Novedades de personas",
+			"style": 1
+		}
+	},
+	{
+		"pk": 36,
+		"model": "api.category",
+		"fields": {
+			"name": "Decesos",
+			"style": 1,
+			"parent": 35
+		}
+	},
+	{
+		"pk": 37,
+		"model": "api.category",
+		"fields": {
+			"name": "Personas extraviadas",
+			"style": 1,
+			"parent": 35
+		}
+	},
+	{
+		"pk": 38,
+		"model": "api.category",
+		"fields": {
+			"name": "Peticiones para enviar un mensaje",
+			"style": 1,
+			"parent": 35
+		}
+	}
+]

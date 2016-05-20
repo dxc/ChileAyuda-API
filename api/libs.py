@@ -13,6 +13,13 @@ class ObjectNotFound(APIException):
         self.detail = '{0:s} does not exist.'.format(model)
 
 
+class InvalidRequestException(APIException):
+    status_code = 400
+
+    def __init__(self, message):
+        self.detail = message
+
+
 def is_integer(value):
     if value is None:
         return False
