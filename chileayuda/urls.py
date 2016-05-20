@@ -37,8 +37,8 @@ router.register(r'categories', CategoryViewSet, 'Category')
 router.register(r'reports', ReportViewSet, 'Report')
 
 reports_router = routers.NestedSimpleRouter(router, r'reports', lookup='report')
-reports_router.register(r'comments', ReportCommentViewSet, base_name='domain-comments')
-reports_router.register(r'media', ReportMediaViewSet, base_name='domain-media')
+reports_router.register(r'comments', ReportCommentViewSet, base_name='report-comments')
+reports_router.register(r'media', ReportMediaViewSet, base_name='report-media')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),
