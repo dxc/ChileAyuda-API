@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from rest_framework_nested import routers
 
 from api.views.user import UserViewSet
+from api.views.session import SessionViewSet
 from api.views.region import RegionViewSet
 from api.views.province import ProvinceViewSet
 from api.views.commune import CommuneViewSet
@@ -28,7 +29,10 @@ from api.views.reportmedia import ReportMediaViewSet
 
 
 router = routers.SimpleRouter()
+
 router.register(r'users', UserViewSet, 'User')
+router.register(r'sessions', SessionViewSet, 'Session')
+
 router.register(r'regions', RegionViewSet, 'Region')
 router.register(r'provinces', ProvinceViewSet, 'Province')
 router.register(r'communes', CommuneViewSet, 'Commune')
@@ -44,5 +48,5 @@ urlpatterns = [
     url(r'^0/', include(router.urls)),
     url(r'^0/', include(reports_router.urls)),
     url(r'^0/auth/', include('rest_framework_social_oauth2.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^0/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

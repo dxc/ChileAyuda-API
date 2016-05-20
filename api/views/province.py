@@ -9,7 +9,7 @@ from ..models import Region, Province
 from ..serializers import ProvinceSerializer
 
 
-class ProvinceViewSet(viewsets.ModelViewSet):
+class ProvinceViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProvinceSerializer
 
     def get_queryset(self):
