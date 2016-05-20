@@ -29,21 +29,19 @@ class TestViewSetReportComments(TransactionTestCase):
 
     def test_http_get(self):
         response = self.client.get(
-            '/0/reports_comments/?report={0:d}'.format(1)
+            '/0/reports/{0:d}/comments/'.format(1)
         )
 
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(json.loads(response.content)))
 
     def test_http_get_invalid(self):
-        params_list = [
-            '',
-            '?report=',
-            '?report=null',
+        urls = [
+            '/0/reports/null/comments/',
         ]
 
-        for params in params_list:
-            response = self.client.get('/0/reports_comments/' + params)
+        for url in urls:
+            response = self.client.get(url)
 
             data = json.loads(response.content)
 
@@ -52,7 +50,7 @@ class TestViewSetReportComments(TransactionTestCase):
             self.assertIn('Report integer id required.', data)
 
     def test_http_get_not_found(self):
-        response = self.client.get('/0/reports_comments/?report=999999999')
+        response = self.client.get('/0/reports/999999999/comments/')
 
         data = json.loads(response.content)
 

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from rest_framework import routers
+from rest_framework_nested import routers
 
 from api.views.user import UserViewSet
 from api.views.region import RegionViewSet
@@ -27,20 +27,22 @@ from api.views.reportcomment import ReportCommentViewSet
 from api.views.reportmedia import ReportMediaViewSet
 
 
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'users', UserViewSet, 'User')
 router.register(r'regions', RegionViewSet, 'Region')
 router.register(r'provinces', ProvinceViewSet, 'Province')
 router.register(r'communes', CommuneViewSet, 'Commune')
 router.register(r'incidents', IncidentViewSet, 'Incident')
 router.register(r'categories', CategoryViewSet, 'Category')
-
 router.register(r'reports', ReportViewSet, 'Report')
-router.register(r'reports_comments', ReportCommentViewSet, 'ReportsComment')
-router.register(r'reports_media', ReportMediaViewSet, 'ReportsMedia')
+
+reports_router = routers.NestedSimpleRouter(router, r'reports', lookup='report')
+reports_router.register(r'comments', ReportCommentViewSet, base_name='domain-comments')
+reports_router.register(r'media', ReportMediaViewSet, base_name='domain-media')
 
 urlpatterns = [
     url(r'^0/', include(router.urls)),
+    url(r'^0/', include(reports_router.urls)),
     url(r'^0/auth/', include('rest_framework_social_oauth2.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

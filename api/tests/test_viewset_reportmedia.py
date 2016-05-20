@@ -29,21 +29,19 @@ class TestViewSetReportMedia(TransactionTestCase):
 
     def test_http_get(self):
         response = self.client.get(
-            '/0/reports_media/?report={0:d}'.format(1)
+            '/0/reports/{0:d}/media/'.format(1)
         )
 
         self.assertEquals(200, response.status_code)
         self.assertEquals(1, len(json.loads(response.content)))
 
     def test_http_get_invalid(self):
-        params_list = [
-            '',
-            '?report=',
-            '?report=null',
+        urls = [
+            '/0/reports/null/media/',
         ]
 
-        for params in params_list:
-            response = self.client.get('/0/reports_media/' + params)
+        for url in urls:
+            response = self.client.get(url)
 
             data = json.loads(response.content)
 
@@ -52,7 +50,7 @@ class TestViewSetReportMedia(TransactionTestCase):
             self.assertIn('Report integer id required.', data)
 
     def test_http_get_not_found(self):
-        response = self.client.get('/0/reports_media/?report=999999999')
+        response = self.client.get('/0/reports/999999999/media/')
 
         data = json.loads(response.content)
 

@@ -13,7 +13,7 @@ class ReportMediaViewSet(viewsets.ModelViewSet):
     serializer_class = ReportMediaSerializer
 
     def get_queryset(self):
-        report_id = self.request.query_params.get('report')
+        report_id = self.kwargs.get('report_pk')
 
         if not is_integer(report_id):
             raise serializers.ValidationError(
