@@ -69,7 +69,7 @@ class TestModelReport(TransactionTestCase):
 
         report.set_details(user, details)
 
-        expected = Report.objects.get(pk=1).reportdetail
+        expected = Report.objects.get(pk=1).details
 
         self.assertIsNotNone(expected)
         self.assertEquals(1, expected.missing_people)
@@ -99,7 +99,7 @@ class TestModelReport(TransactionTestCase):
             report.set_details(*args)
 
             try:
-                expected = Report.objects.get(pk=1).reportdetail
+                expected = Report.objects.get(pk=1).details
                 self.fail()
             except ObjectDoesNotExist:
                 expected = None

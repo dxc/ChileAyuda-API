@@ -170,7 +170,7 @@ class ReportValidation(models.Model):
 
 
 class ReportDetail(models.Model):
-    report = models.OneToOneField(Report)
+    report = models.OneToOneField(Report, related_name='details')
 
     missing_people = models.IntegerField(blank=True, null=True)
     injured_people = models.IntegerField(blank=True, null=True)

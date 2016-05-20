@@ -195,6 +195,8 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
     commune = CommuneWithProvinceSerializer()
     coordinates = CoordinatesSerializer()
 
+    details = ReportDetailSerializer()
+
     class Meta:
         model = Report
         fields = (
@@ -206,5 +208,6 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
             'date',
             'user',
             'commune',
-            'coordinates'
+            'coordinates',
+            'details',
         )
