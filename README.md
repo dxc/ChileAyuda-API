@@ -1,5 +1,8 @@
 # ChileAyuda API
 
+[![Build Status](https://travis-ci.org/m4droid/ChileAyuda-API.svg?branch=master)](https://travis-ci.org/m4droid/ChileAyuda-API)
+[![Coverage Status](https://coveralls.io/repos/github/m4droid/ChileAyuda-API/badge.svg?branch=master)](https://coveralls.io/github/m4droid/ChileAyuda-API?branch=master)
+
 ### Develop instructions
 
 ##### 1. COPY CONFIG FILE
@@ -28,7 +31,6 @@
 
 ##### 4. RUN WEB SERVICE
     python manage.py runserver
-
 
 ### Run tests
 
