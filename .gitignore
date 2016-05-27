@@ -10,3 +10,10 @@ htmlcov/
 
 db.sqlite3
 chileayuda/settings.py
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/ChileAyuda-API.iml
+.idea/.name
+.idea/encodings.xml
