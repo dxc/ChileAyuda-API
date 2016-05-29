@@ -6,7 +6,7 @@
 ### Develop instructions
 
 ##### 0. Use virtualenvwrapper (optional)
-    # Linux/ OS X
+    # Linux / OS X
     pip install virtualenvwrapper
 
     # Windows
@@ -46,5 +46,8 @@
     python manage.py runserver
 
 ### Run tests
-
+    # Linux / OS X
     ./run_tests.sh
+
+    # Windows
+    run_tests.bat
