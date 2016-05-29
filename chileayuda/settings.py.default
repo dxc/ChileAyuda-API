@@ -35,8 +35,8 @@ SOCIAL_AUTH_FACEBOOK_KEY = ''
 SOCIAL_AUTH_FACEBOOK_SECRET = ''
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'locale': 'es_CL',
-  'fields': 'id, name, email'
+    'locale': 'es_CL',
+    'fields': 'id, name, email'
 }
 
 
