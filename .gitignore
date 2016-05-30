@@ -4,12 +4,14 @@
 *.pyc
 build
 dist
+venv
 
 .coverage
 htmlcov/
 
 db.sqlite3
 chileayuda/settings.py
+staticfiles
 
 .idea/workspace.xml
 .idea/vcs.xml
