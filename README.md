@@ -5,8 +5,21 @@
 
 ### Develop instructions
 
+##### 0. Use virtualenvwrapper (optional)
+    # Linux/ OS X
+    pip install virtualenvwrapper
+
+    # Windows
+    pip install virtualenvwrapper-win
+
+    # Create a new virtualenv
+    mkvirtualenv chileayuda
+
+    # Use virtualenv
+    workon chileayuda
+
 ##### 1. COPY CONFIG FILE
-	# Linux / OS X
+    # Linux / OS X
     cp chileayuda/settings.py{.default,}
 
     # Windows
@@ -19,7 +32,7 @@
     pip install -r requirements-test.txt
 
 ##### 3. INIT SYSTEM
-	# Run DB migrations
+    # Run DB migrations
     python manage.py migrate
 
     # Load fixtures

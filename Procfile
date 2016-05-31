@@ -1,0 +1,1 @@
+web: gunicorn chileayuda.wsgi --log-file -
