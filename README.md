@@ -20,10 +20,10 @@
 
 ##### 1. COPY CONFIG FILE
     # Linux / OS X
-    cp chileayuda/settings.py{.default,}
+    cp chileayuda/settings/local.py.default chileayuda/settings/local.py
 
     # Windows
-    copy chileayuda\settings.py.default chileayuda\settings.py
+    copy chileayuda\settings\local.py.default chileayuda\settings\local.py
 
 ##### 2. INSTALL PYTHON DEPENDENCIES
     pip install -r requirements.txt
