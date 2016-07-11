@@ -1,7 +1,7 @@
 # ChileAyuda API
 
-[![Build Status](https://travis-ci.org/m4droid/ChileAyuda-API.svg?branch=master)](https://travis-ci.org/m4droid/ChileAyuda-API)
-[![Coverage Status](https://coveralls.io/repos/github/m4droid/ChileAyuda-API/badge.svg?branch=master)](https://coveralls.io/github/m4droid/ChileAyuda-API?branch=master)
+[![Build Status](https://travis-ci.org/dxc/ChileAyuda-API.svg?branch=master)](https://travis-ci.org/dxc/ChileAyuda-API)
+[![Coverage Status](https://coveralls.io/repos/github/dxc/ChileAyuda-API/badge.svg?branch=master)](https://coveralls.io/github/dxc/ChileAyuda-API?branch=master)
 
 ### Develop instructions
 
